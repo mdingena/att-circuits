@@ -1,6 +1,6 @@
 {
   "name": "att-circuits",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Template for setting up a new strict TypeScripted project that lets you publish a hybrid ESM/CJS NPM package.",
   "homepage": "https://github.com/mdingena/att-circuits#readme",
   "repository": {
