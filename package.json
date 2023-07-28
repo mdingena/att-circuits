@@ -1,17 +1,17 @@
 {
-  "name": "typescript-npm-package",
+  "name": "att-circuits",
   "version": "1.0.0-beta.1",
   "description": "Template for setting up a new strict TypeScripted project that lets you publish a hybrid ESM/CJS NPM package.",
-  "homepage": "https://github.com/mdingena/typescript-npm-package#readme",
+  "homepage": "https://github.com/mdingena/att-circuits#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdingena/typescript-npm-package.git"
+    "url": "git+https://github.com/mdingena/att-circuits.git"
   },
   "keywords": [],
   "author": "Marc Dingena",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mdingena/typescript-npm-package/issues"
+    "url": "https://github.com/mdingena/att-circuits/issues"
   },
   "scripts": {
     "prepare": "run-s prepare:*",
