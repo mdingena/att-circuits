@@ -1,11 +1,16 @@
-import { LogicGateReceiverComponent, Prefab, type LogicOperator } from 'att-string-transcoder';
+import { LogicGateReceiverComponent, Prefab, LogicOperator } from 'att-string-transcoder';
 
-export function createOperator(operator: LogicOperator, isInversedOutput = true): Prefab<'Logic_Operator'> {
+export function createOperator(
+  operator: keyof typeof LogicOperator,
+  isInversedOutput = true
+): Prefab<'Logic_Operator'> {
+  const operationType = LogicOperator[operator];
+
   return new Prefab('Logic_Operator', {
     components: {
       LogicGateReceiver: new LogicGateReceiverComponent({
         version: 2,
-        operationType: operator,
+        operationType,
         isInversedOutputSaved: isInversedOutput
       })
     }
