@@ -1,0 +1,65 @@
+{
+  "name": "typescript-npm-package",
+  "version": "1.3.1",
+  "description": "Template for setting up a new strict TypeScripted project that lets you publish a hybrid ESM/CJS NPM package.",
+  "homepage": "https://github.com/mdingena/typescript-npm-package#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdingena/typescript-npm-package.git"
+  },
+  "keywords": [],
+  "author": "Marc Dingena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdingena/typescript-npm-package/issues"
+  },
+  "scripts": {
+    "prepare": "run-s prepare:*",
+    "prepare:husky": "husky install",
+    "prepare:build": "npm run build",
+    "lint": "eslint --fix \"src/**/*.{ts,js}\"",
+    "format": "prettier --write \"+(*.md|src/**/*.{js,ts,json,md})\"",
+    "compile": "tsc --noEmit",
+    "prebuild": "rimraf dist/",
+    "build": "run-p build:*",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build:esm": "tsc -p tsconfig-esm.json",
+    "postbuild:cjs": "node --loader ts-node/esm ./scripts/postbuild-cjs.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --loader ts-node/esm src/index.ts"
+  },
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "module": "./dist/esm/index.js",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
