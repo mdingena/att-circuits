@@ -2,7 +2,7 @@ import { LogicGateReceiverComponent, Prefab, LogicOperator } from 'att-string-tr
 
 export function createOperator(
   operator: keyof typeof LogicOperator,
-  isInversedOutput = true
+  isInversedOutput = false
 ): Prefab<'Logic_Operator'> {
   const operationType = LogicOperator[operator];
 
