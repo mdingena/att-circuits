@@ -22,8 +22,8 @@ export class Circuit {
    * import { Circuit } from 'att-circuits';
    * import { Prefab } from 'att-string-transcoder';
    *
-   * const lever = Prefab<'MRK_Small_Lever'>.fromSaveString('...');
-   * const door = Prefab<'MRK_gate_02'>.fromSaveString('...');
+   * const lever = Prefab.fromSaveString<'MRK_Small_Lever'>('...');
+   * const door = Prefab.fromSaveString<'MRK_gate_02'>('...');
    * const circuit = new Circuit();
    *
    * circuit.createWire('boolean').connect(lever, door);
@@ -76,7 +76,7 @@ export class Circuit {
    * import { Circuit } from 'att-circuits';
    * import { Prefab } from 'att-string-transcoder';
    *
-   * const door = Prefab<'MRK_gate_02'>.fromSaveString('...');
+   * const door = Prefab.fromSaveString<'MRK_gate_02'>('...');
    * const circuit = new Circuit();
    *
    * circuit.setOrigin(door);
@@ -102,8 +102,8 @@ export class Circuit {
    * import { Circuit } from 'att-circuits';
    * import { Prefab } from 'att-string-transcoder';
    *
-   * const lever = Prefab<'MRK_Small_Lever'>.fromSaveString('...');
-   * const door = Prefab<'MRK_gate_02'>.fromSaveString('...');
+   * const lever = Prefab.fromSaveString<'MRK_Small_Lever'>('...');
+   * const door = Prefab.fromSaveString<'MRK_gate_02'>('...');
    * const circuit = new Circuit();
    *
    * circuit.createWire('boolean').connect(lever, door);

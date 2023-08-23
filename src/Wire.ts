@@ -69,10 +69,10 @@ export class Wire<TWire extends WireType> {
    * import { Prefab } from 'att-string-transcoder';
    *
    * // `MRK_Small_Lever` has a `LogicBoolSender` component, letting it send boolean signals.
-   * const sender = Prefab<'MRK_Small_Lever'>.fromSaveString('...');
+   * const sender = Prefab.fromSaveString<'MRK_Small_Lever'>('...');
    *
    * // `MRK_gate_02` has a `LogicBoolReceiver` component, letting it receive boolean signals.
-   * const receiver = Prefab<'MRK_gate_02'>.fromSaveString('...');
+   * const receiver = Prefab.fromSaveString<'MRK_gate_02'>('...');
    *
    * const circuit = new Circuit();
    * const wire = circuit.createWire('boolean');
