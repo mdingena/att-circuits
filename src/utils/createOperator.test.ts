@@ -2,7 +2,7 @@ import { LogicOperator } from 'att-string-transcoder';
 
 import { createOperator } from './createOperator.js';
 
-describe('createOperator', () => {
+describe('createOperator()', () => {
   describe('when given only required arguments', () => {
     it('returns a Logic_Operator prefab', () => {
       const prefab = createOperator('And');
