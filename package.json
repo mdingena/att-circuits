@@ -1,7 +1,7 @@
 {
   "name": "att-circuits",
   "version": "1.0.0-beta.2",
-  "description": "Template for setting up a new strict TypeScripted project that lets you publish a hybrid ESM/CJS NPM package.",
+  "description": "Send signals between interactive prefabs to create your own puzzles and logic contraptions.",
   "homepage": "https://github.com/mdingena/att-circuits#readme",
   "repository": {
     "type": "git",
