@@ -20,12 +20,29 @@ import {
 
 import * as constants from './constants.js';
 
+/**
+ * Represents a conduit that can be connected between two prefabs forming a logical connection of
+ * the wire's type.
+ */
 export class Wire<TWire extends WireType> {
   private readonly circuit: Circuit;
   private readonly senderName: LogicSenderName;
   private readonly receiverName: LogicReceiverName;
   private readonly type: WireType;
 
+  /**
+   * Creates a wire instance that can connect two prefabs via their logic sender and receiver that
+   * match this wire's type. A wire must belong to a circuit, which must be passed as its second
+   * argument.
+   *
+   * @example
+   * import { Circuit, Wire } from 'att-circuits';
+   *
+   * const circuit = new Circuit();
+   * const wire = new Wire('boolean', circuit);
+   * // alternatively
+   * const wire = circuit.createWire('boolean');
+   */
   constructor(type: TWire, circuit: Circuit) {
     const senderName = constants.WIRES.get(type);
 
@@ -43,6 +60,25 @@ export class Wire<TWire extends WireType> {
     this.type = type;
   }
 
+  /**
+   * Connects a logic sender to a logic receiver. The signal transmitted by this wire must match
+   * the sender's and receiver's type.
+   *
+   * @example
+   * import { Circuit } from 'att-circuits';
+   * import { Prefab } from 'att-string-transcoder';
+   *
+   * // `MRK_Small_Lever` has a `LogicBoolSender` component, letting it send boolean signals.
+   * const sender = Prefab<'MRK_Small_Lever'>.fromSaveString('...');
+   *
+   * // `MRK_gate_02` has a `LogicBoolReceiver` component, letting it receive boolean signals.
+   * const receiver = Prefab<'MRK_gate_02'>.fromSaveString('...');
+   *
+   * const circuit = new Circuit();
+   * const wire = circuit.createWire('boolean');
+   *
+   * wire.connect(sender, receiver);
+   */
   connect(sender: Prefab, receiver: Prefab) {
     const logicSender = this.getLogicSender(sender);
     const logicReceiver = this.getLogicReceiver(receiver);
@@ -66,6 +102,9 @@ export class Wire<TWire extends WireType> {
     this.circuit.prefabs.add(receiver);
   }
 
+  /**
+   * Returns the logic receiver matching this wire's type of the given prefab.
+   */
   private getLogicReceiver(prefab: Prefab): Exclude<PrefabComponents[LogicReceiverName], undefined> {
     let receiverName = this.receiverName;
     let logicReceiver = prefab.components[receiverName] ?? prefab.components[constants.LOGIC_GATE_RECEIVER_NAME];
@@ -110,6 +149,9 @@ export class Wire<TWire extends WireType> {
     return logicReceiver;
   }
 
+  /**
+   * Returns the logic sender matching this wire's type of the given prefab.
+   */
   private getLogicSender(prefab: Prefab): Exclude<PrefabComponents[LogicSenderName], undefined> {
     let logicSender = prefab.components[this.senderName];
 
