@@ -25,7 +25,7 @@
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:esm": "tsc -p tsconfig-esm.json",
     "postbuild:cjs": "node --loader ts-node/esm ./scripts/postbuild-cjs.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "dev": "node --loader ts-node/esm src/index.ts"
   },
   "engines": {
