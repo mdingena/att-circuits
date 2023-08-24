@@ -2,3 +2,4 @@
 
 - Classes
   - [Circuit](./Circuit.md)
+  - [Wire](./Wire.md)
