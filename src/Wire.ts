@@ -79,7 +79,7 @@ export class Wire<TWire extends WireType> {
    *
    * wire.connect(sender, receiver);
    */
-  connect(sender: Prefab, receiver: Prefab) {
+  connect(sender: Prefab, receiver: Prefab): void {
     const logicSender = this.getLogicSender(sender);
     const logicReceiver = this.getLogicReceiver(receiver);
 
