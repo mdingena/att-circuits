@@ -145,8 +145,10 @@ export class Wire<TWire extends WireType> {
           logicReceiver = new LogicVector3ReceiverComponent({ version: 1 });
           break;
 
+        /* c8 ignore start */
         default:
           throw new Error(`Unsupported LogicReceiver "${receiverName}".`);
+        /* c8 ignore stop */
       }
 
       prefab.addComponent(logicReceiver);
@@ -185,8 +187,10 @@ export class Wire<TWire extends WireType> {
           logicSender = new LogicVector3SenderComponent({ version: 1, identifier });
           break;
 
+        /* c8 ignore start */
         default:
           throw new Error(`Unsupported LogicSender "${this.senderName}".`);
+        /* c8 ignore stop */
       }
 
       prefab.addComponent(logicSender);
