@@ -134,7 +134,7 @@ export class Circuit {
         z: position.z - origin.z
       });
 
-      this.context.addChildPrefab(null, prefab.clone());
+      this.context.addChildPrefab(null, prefab.clone({ ignoreIndeterminateComponentVersions: true }));
     }
 
     this.prefabs.clear();
