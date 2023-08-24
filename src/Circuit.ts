@@ -8,9 +8,41 @@ import { Wire } from './Wire.js';
  * Represents a connected circuit of logic senders and receivers.
  */
 export class Circuit {
+  /**
+   * The internal Logic_Context prefab that will act as the circuit parent prefab.
+   *
+   * @example
+   * import { Circuit } from 'att-circuits';
+   *
+   * const circuit = new Circuit();
+   * const logicContext = circuit.context;
+   */
   context: Prefab<'Logic_Context'>;
+
+  /**
+   * Tracks state whether circuit has been converted to a prefab.
+   */
   private isApplied: boolean;
+
+  /**
+   * Tracks unique logic sender IDs.
+   */
   private nextLogicIdentifier: number;
+
+  /**
+   * A unique set of child prefabs that are part of this circuit.
+   *
+   * @example
+   * import { Circuit } from 'att-circuits';
+   * import { Prefab } from 'att-string-transcoder';
+   *
+   * const lever = new Prefab('MRK_Small_Lever');
+   * const door = new Prefab('MRK_gate_02');
+   *
+   * circuit.createWire('boolean').connect(lever, door);
+   *
+   * const children = circuit.prefabs;
+   */
   prefabs: Set<Prefab>;
 
   /**
