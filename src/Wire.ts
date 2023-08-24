@@ -88,7 +88,7 @@ export class Wire<TWire extends WireType> {
 
     if (isConfiguredNonGateReceiver) {
       process.stdout.write(
-        `Warning: The ${logicReceiver.name} on ${receiver.name} was already wired up to something else.`
+        `Warning: The ${logicReceiver.name} on ${receiver.name} was already wired up to something else.\n`
       );
     }
 
