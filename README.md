@@ -11,3 +11,42 @@
 </p>
 
 ---
+
+Allows you to create logic gate circuits in _A Township Tale_, letting you create custom puzzles and logic contraptions.
+
+⚠️ This library has a **peer dependency** on [`att-string-transcoder`](https://github.com/mdingena/att-string-transcoder). You must manually install this peer dependency in your project in order to use `att-circuits`.
+
+⚠️ This library is meant for advanced users who already have a good understanding of ATT save strings. **Check out our [ATT String Workshop](https://github.com/mdingena/att-string-workshop) project to learn the basics.**
+
+## :sparkles: Quickstart
+
+### Installation
+
+Add this library to your project's dependencies:
+
+```shell
+npm install --save att-circuits
+```
+
+### Usage
+
+```ts
+import { Circuit } from 'att-circuits';
+import { Prefab } from 'att-string-transcoder';
+
+const lever = Prefab.fromSaveString<'MRK_Small_Lever'>('...');
+const door = Prefab.fromSaveString<'MRK_gate_02'>('...');
+const circuit = new Circuit();
+
+circuit.createWire('boolean').connect(lever, door);
+circuit.setOrigin(door);
+
+const prefab = circuit.toPrefab();
+prefab.print();
+```
+
+Read the [API Reference Documentation](docs/README.md) for more options.
+
+## :bow: Attribution
+
+This project would not be possible without the knowledge revealed and shared by [poi](https://github.com/officialpoiuytrewq4645). :blue_heart:
