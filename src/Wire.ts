@@ -93,7 +93,13 @@ export class Wire<TWire extends WireType> {
     }
 
     if (logicReceiver instanceof LogicGateReceiverComponent) {
-      logicReceiver.senders.push(logicSender.identifier);
+      if (logicReceiver.senders.includes(logicSender.identifier)) {
+        process.stdout.write(
+          `Warning: The ${logicReceiver.name} on ${receiver.name} is already wired up to this sender.\n`
+        );
+      } else {
+        logicReceiver.senders.push(logicSender.identifier);
+      }
     } else {
       logicReceiver.sender = logicSender.identifier;
     }
